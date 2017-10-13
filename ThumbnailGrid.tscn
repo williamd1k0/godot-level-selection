@@ -19,8 +19,8 @@ func _ready():
 
 func _on_thumbnail_selected(scene, level_key):
 	level = scene
-	emit_signal(\"selection_changed\", \"%s \\n%s\\n\\nScore: %s/%s\"%[dict[level_key].name, dict[level_key].description,
-	dict[level_key].score, dict[level_key].total])
+	var info = dict[level_key]
+	emit_signal(\"selection_changed\", info)
 
 func _on_thumbnail_pressed():
 	get_tree().change_scene(level)"
@@ -39,6 +39,6 @@ custom_constants/vseparation = 472
 custom_constants/hseparation = 256
 columns = 4
 script/script = SubResource( 1 )
-level_data = "res://Levels/levels_data.json"
+level_data = null
 
 
