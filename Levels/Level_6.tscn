@@ -4,7 +4,6 @@
 
 [node name="Orange" instance=ExtResource( 1 )]
 
-modulate = Color( 1, 0.234375, 0, 1 )
-description = "This is an awesome orange level"
+modulate = Color( 0, 1, 0.0390625, 1 )
 
 

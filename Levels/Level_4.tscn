@@ -4,6 +4,6 @@
 
 [node name="Green" instance=ExtResource( 1 )]
 
-modulate = Color( 0, 1, 0.0625, 1 )
+modulate = Color( 0.96875, 0, 1, 1 )
 
 
