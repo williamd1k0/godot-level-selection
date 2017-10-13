@@ -1,0 +1,10 @@
+{
+  "level_0":{"name":"Cyan", "description":"This is an awesome Cyan level with a Sprite modulated with Cyan", "score":0, "total":10000},
+  "level_1":{"name":"Red", "description":"This is an awesome Red level with a Sprite modulated with Red", "score":0, "total":10000},
+  "level_2":{"name":"Blue", "description":"This is an awesome Blue level with a Sprite modulated with Blue", "score":0, "total":10000},
+  "level_3":{"name":"Purple", "description":"This is an awesome Purple level with a Sprite modulated with Purle", "score":0, "total":10000},
+  "level_4":{"name":"Pink", "description":"This is an awesome Pink level with a Sprite modulated with Pink", "score":0, "total":10000},
+  "level_5":{"name":"Orange", "description":"This is an awesome Orange level with a Sprite modulated with Orange", "score":0, "total":10000},
+  "level_6":{"name":"Green", "description":"This is an awesome Green level with a Sprite modulated with Green", "score":0, "total":10000},
+  "level_7":{"name":"Yellow", "description":"This is an awesome Yellow level with a Sprite modulated with Yellow", "score":0, "total":10000}
+}

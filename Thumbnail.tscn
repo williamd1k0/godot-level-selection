@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://focus.png" type="Texture" id=2]
 
 [sub_resource type="GDScript" id=1]
 
 script/source = "extends TextureButton
 
-export(PackedScene) var scene
-export(Color) var selected_color
+export(String, FILE) var scene
+export (String) var level_key
 signal selected(scene_path)
 
 func _ready():
@@ -15,12 +16,7 @@ func _ready():
 	connect(\"selected\", get_parent(), \"_on_thumbnail_selected\")
 
 func _on_focus_enter():
-	set_modulate(selected_color)
-	emit_signal(\"selected\", scene.get_path())
-
-func _on_focus_exit():
-	set_modulate(Color(1,1,1,1))
-"
+	emit_signal(\"selected\", scene, level_key)"
 
 [node name="Thumbnail" type="TextureButton"]
 
@@ -36,14 +32,13 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 1 )
+textures/focused = ExtResource( 2 )
 params/resize_mode = 0
 params/stretch_mode = 0
 script/script = SubResource( 1 )
 scene = null
-selected_color = Color( 1, 0.425781, 0.425781, 1 )
+level_key = null
 
 [connection signal="focus_enter" from="." to="." method="_on_focus_enter"]
-
-[connection signal="focus_exit" from="." to="." method="_on_focus_exit"]
 
 

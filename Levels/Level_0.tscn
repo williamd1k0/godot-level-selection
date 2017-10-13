@@ -5,6 +5,6 @@
 [node name="Cyan" instance=ExtResource( 1 )]
 
 modulate = Color( 0, 1, 1, 1 )
-description = "This is an awesome cyan level"
+script/script = null
 
 

@@ -1,0 +1,140 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://ThumbnailGrid.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Thumbnail.tscn" type="PackedScene" id=2]
+
+[node name="SelectionScreen" type="MarginContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1024.0
+margin/bottom = 600.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+
+[node name="Portions" type="HBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 25.0
+margin/top = 25.0
+margin/right = 999.0
+margin/bottom = 575.0
+alignment = 0
+
+[node name="LevelInfo" type="Label" parent="Portions"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 294.0
+margin/bottom = 550.0
+text = "This is where Level info goes"
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ThumbnailGrid" parent="Portions" instance=ExtResource( 1 )]
+
+margin/left = 298.0
+margin/right = 974.0
+margin/bottom = 550.0
+custom_constants/vseparation = 420
+custom_constants/hseparation = 140
+level_data = "res://Levels/demo_data.json"
+
+[node name="Thumbnail" parent="Portions/ThumbnailGrid" instance=ExtResource( 2 )]
+
+focus_neighbour/left = NodePath("../Thumbnail3")
+focus_neighbour/top = NodePath("../Thumbnail4")
+margin/right = 64.0
+margin/bottom = 64.0
+scene = "res://Levels/Level_0.tscn"
+level_key = "level_0"
+
+[node name="Thumbnail1" parent="Portions/ThumbnailGrid" instance=ExtResource( 2 )]
+
+focus_neighbour/top = NodePath("../Thumbnail5")
+margin/left = 204.0
+margin/right = 268.0
+margin/bottom = 64.0
+scene = "res://Levels/Level_1.tscn"
+level_key = "level_1"
+
+[node name="Thumbnail2" parent="Portions/ThumbnailGrid" instance=ExtResource( 2 )]
+
+focus_neighbour/top = NodePath("../Thumbnail6")
+margin/left = 408.0
+margin/right = 472.0
+margin/bottom = 64.0
+scene = "res://Levels/Level_2.tscn"
+level_key = "level_2"
+
+[node name="Thumbnail3" parent="Portions/ThumbnailGrid" instance=ExtResource( 2 )]
+
+focus_neighbour/top = NodePath("../Thumbnail7")
+focus_neighbour/right = NodePath("../Thumbnail")
+margin/left = 612.0
+margin/right = 676.0
+margin/bottom = 64.0
+scene = "res://Levels/Level_3.tscn"
+level_key = "level_3"
+
+[node name="Thumbnail4" parent="Portions/ThumbnailGrid" instance=ExtResource( 2 )]
+
+focus_neighbour/left = NodePath("../Thumbnail7")
+focus_neighbour/bottom = NodePath("../Thumbnail")
+margin/top = 484.0
+margin/right = 64.0
+margin/bottom = 548.0
+scene = "res://Levels/Level_4.tscn"
+level_key = "level_4"
+
+[node name="Thumbnail5" parent="Portions/ThumbnailGrid" instance=ExtResource( 2 )]
+
+focus_neighbour/bottom = NodePath("../Thumbnail1")
+margin/left = 204.0
+margin/top = 484.0
+margin/right = 268.0
+margin/bottom = 548.0
+scene = "res://Levels/Level_5.tscn"
+level_key = "level_5"
+
+[node name="Thumbnail6" parent="Portions/ThumbnailGrid" instance=ExtResource( 2 )]
+
+focus_neighbour/bottom = NodePath("../Thumbnail2")
+margin/left = 408.0
+margin/top = 484.0
+margin/right = 472.0
+margin/bottom = 548.0
+scene = "res://Levels/Level_6.tscn"
+level_key = "level_6"
+
+[node name="Thumbnail7" parent="Portions/ThumbnailGrid" instance=ExtResource( 2 )]
+
+focus_neighbour/right = NodePath("../Thumbnail4")
+focus_neighbour/bottom = NodePath("../Thumbnail3")
+margin/left = 612.0
+margin/top = 484.0
+margin/right = 676.0
+margin/bottom = 548.0
+scene = "res://Levels/Level_7.tscn"
+level_key = "level_7"
+
+[connection signal="selection_changed" from="Portions/ThumbnailGrid" to="Portions/LevelInfo" method="set_text"]
+
+
+[editable path="Portions/ThumbnailGrid"]
