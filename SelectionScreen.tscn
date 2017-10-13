@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://ThumbnailGrid.tscn" type="PackedScene" id=1]
+
+[node name="SelectionScreen" type="MarginContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1024.0
+margin/bottom = 600.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+
+[node name="Portions" type="HBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 25.0
+margin/top = 25.0
+margin/right = 999.0
+margin/bottom = 575.0
+alignment = 0
+
+[node name="LevelInfo" type="Label" parent="Portions"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 294.0
+margin/bottom = 550.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ThumbnailGrid" parent="Portions" instance=ExtResource( 1 )]
+
+margin/left = 298.0
+margin/right = 974.0
+margin/bottom = 550.0
+custom_constants/vseparation = 420
+custom_constants/hseparation = 140
+
+[connection signal="selection_changed" from="Portions/ThumbnailGrid" to="Portions/LevelInfo" method="set_text"]
+
+

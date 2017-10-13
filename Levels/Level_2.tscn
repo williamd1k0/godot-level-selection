@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://Levels/AbstractLevel.tscn" type="PackedScene" id=1]
+
+[node name="Pink" instance=ExtResource( 1 )]
+
+modulate = Color( 0.96875, 0, 1, 1 )
+description = "This is an awesome pink level"
+
+

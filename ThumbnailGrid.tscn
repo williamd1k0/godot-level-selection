@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=1]
+
+[ext_resource path="res://Thumbnail.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Level_0.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/Level_1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Level_2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Level_3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Level_4.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/Level_5.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Level_6.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/Level_7.tscn" type="PackedScene" id=9]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends GridContainer
+
+var scene = null
+var path = null
+signal selection_changed(scene_info)
+
+func _ready():
+	get_child(0).grab_focus()
+
+func _on_thumbnail_selected( scene_path ):
+	path = scene_path
+	if scene != null:
+		scene.free()
+	scene = load(scene_path).instance()
+	emit_signal(\"selection_changed\", \"%s \\n%s\"%[scene.get_name(),scene.description])
+
+func _on_thumbnail_pressed():
+	get_tree().change_scene(path)
+"
+
+[node name="ThumbnailGrid" type="GridContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1024.0
+margin/bottom = 600.0
+custom_constants/vseparation = 472
+custom_constants/hseparation = 256
+columns = 4
+script/script = SubResource( 1 )
+
+[node name="Thumbnail" parent="." instance=ExtResource( 1 )]
+
+focus_neighbour/left = NodePath("../Thumbnail3")
+focus_neighbour/top = NodePath("../Thumbnail4")
+margin/right = 64.0
+margin/bottom = 64.0
+scene = ExtResource( 2 )
+
+[node name="Thumbnail1" parent="." instance=ExtResource( 1 )]
+
+focus_neighbour/top = NodePath("../Thumbnail5")
+margin/left = 320.0
+margin/right = 384.0
+margin/bottom = 64.0
+scene = ExtResource( 3 )
+
+[node name="Thumbnail2" parent="." instance=ExtResource( 1 )]
+
+focus_neighbour/top = NodePath("../Thumbnail6")
+margin/left = 640.0
+margin/right = 704.0
+margin/bottom = 64.0
+scene = ExtResource( 4 )
+
+[node name="Thumbnail3" parent="." instance=ExtResource( 1 )]
+
+focus_neighbour/top = NodePath("../Thumbnail7")
+focus_neighbour/right = NodePath("../Thumbnail")
+margin/left = 960.0
+margin/right = 1024.0
+margin/bottom = 64.0
+scene = ExtResource( 5 )
+
+[node name="Thumbnail4" parent="." instance=ExtResource( 1 )]
+
+focus_neighbour/bottom = NodePath("../Thumbnail")
+margin/top = 536.0
+margin/right = 64.0
+margin/bottom = 600.0
+scene = ExtResource( 6 )
+
+[node name="Thumbnail5" parent="." instance=ExtResource( 1 )]
+
+focus_neighbour/bottom = NodePath("../Thumbnail1")
+margin/left = 320.0
+margin/top = 536.0
+margin/right = 384.0
+margin/bottom = 600.0
+scene = ExtResource( 7 )
+
+[node name="Thumbnail6" parent="." instance=ExtResource( 1 )]
+
+focus_neighbour/bottom = NodePath("../Thumbnail2")
+margin/left = 640.0
+margin/top = 536.0
+margin/right = 704.0
+margin/bottom = 600.0
+scene = ExtResource( 8 )
+
+[node name="Thumbnail7" parent="." instance=ExtResource( 1 )]
+
+focus_neighbour/bottom = NodePath("../Thumbnail3")
+margin/left = 960.0
+margin/top = 536.0
+margin/right = 1024.0
+margin/bottom = 600.0
+scene = ExtResource( 9 )
+
+
