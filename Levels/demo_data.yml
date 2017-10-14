@@ -1,0 +1,57 @@
+---
+level_0:
+  meta:
+    color: 00FFFF
+  name: Cyan
+  description: This is an awesome Cyan level with a Sprite modulated with Cyan
+  score: 0
+  total: 10000
+level_1:
+  meta:
+    color: FF0000
+  name: Red
+  description: This is an awesome Red level with a Sprite modulated with Red
+  score: 0
+  total: 10000
+level_2:
+  meta:
+    color: 0000FF
+  name: Blue
+  description: This is an awesome Blue level with a Sprite modulated with Blue
+  score: 0
+  total: 10000
+level_3:
+  meta:
+    color: '800080'
+  name: Purple
+  description: This is an awesome Purple level with a Sprite modulated with Purle
+  score: 0
+  total: 10000
+level_4:
+  meta:
+    color: FFC0CB
+  name: Pink
+  description: This is an awesome Pink level with a Sprite modulated with Pink
+  score: 0
+  total: 10000
+level_5:
+  meta:
+    color: FFA500
+  name: Orange
+  description: This is an awesome Orange level with a Sprite modulated with Orange
+  score: 0
+  total: 10000
+level_6:
+  meta:
+    color: 00FF00
+  name: Green
+  description: This is an awesome Green level with a Sprite modulated with Green
+  score: 0
+  total: 10000
+level_7:
+  meta:
+    color: FFFF00
+  name: Yellow
+  description: This is an awesome Yellow level with a Sprite modulated with Yellow
+  score: 0
+  total: 10000

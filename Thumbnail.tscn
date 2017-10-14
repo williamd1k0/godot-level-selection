@@ -1,7 +1,29 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://focus.png" type="Texture" id=2]
+
+[sub_resource type="CanvasItemShader" id=2]
+
+_code = {
+"fragment": "uniform bool focus = false;
+uniform color focus_color;
+
+if (focus){
+	COLOR.rgb *= focus_color.rgb;
+}",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[sub_resource type="CanvasItemMaterial" id=3]
+
+shader/shader = SubResource( 2 )
+shader/shading_mode = 0
+shader_param/focus = false
+shader_param/focus_color = Color( 1, 0.324219, 0.324219, 1 )
 
 [sub_resource type="GDScript" id=1]
 
@@ -12,14 +34,24 @@ export (String) var level_key
 signal selected(scene_path)
 
 func _ready():
+	set_material(get_material().duplicate())
 	connect(\"pressed\", get_parent(), \"_on_thumbnail_pressed\")
 	connect(\"selected\", get_parent(), \"_on_thumbnail_selected\")
 
+func set_focus_color(color):
+	get_material().set_shader_param(\"focus_color\", color)
+
 func _on_focus_enter():
-	emit_signal(\"selected\", scene, level_key)"
+	emit_signal(\"selected\", scene, level_key)
+	get_material().set_shader_param(\"focus\", true)
+
+func _on_focus_exit():
+	get_material().set_shader_param(\"focus\", false)
+"
 
 [node name="Thumbnail" type="TextureButton"]
 
+material/material = SubResource( 3 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -32,7 +64,6 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 1 )
-textures/focused = ExtResource( 2 )
 params/resize_mode = 0
 params/stretch_mode = 0
 script/script = SubResource( 1 )
@@ -40,5 +71,7 @@ scene = null
 level_key = null
 
 [connection signal="focus_enter" from="." to="." method="_on_focus_enter"]
+
+[connection signal="focus_exit" from="." to="." method="_on_focus_exit"]
 
 

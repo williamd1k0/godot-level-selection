@@ -15,6 +15,8 @@ func _ready():
 		var text = f.get_as_text()
 		dict.parse_json(text)
 		f.close()
+	for level in get_children():
+		level.set_focus_color(Color(dict[level.level_key].meta.color))
 	get_child(0).grab_focus()
 
 func _on_thumbnail_selected(scene, level_key):
@@ -23,7 +25,8 @@ func _on_thumbnail_selected(scene, level_key):
 	emit_signal(\"selection_changed\", info)
 
 func _on_thumbnail_pressed():
-	get_tree().change_scene(level)"
+	get_tree().change_scene(level)
+"
 
 [node name="ThumbnailGrid" type="GridContainer"]
 
